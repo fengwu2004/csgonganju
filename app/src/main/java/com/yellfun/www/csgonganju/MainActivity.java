@@ -2,10 +2,12 @@ package com.yellfun.www.csgonganju;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.webkit.ValueCallback;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,10 +43,22 @@ public class MainActivity extends AppCompatActivity {
   }
 
   @Override
+  public void onBackPressed() {
+
+    webView.evaluateJavascript("javascript:onBack()", new ValueCallback<String>() {
+      @Override
+      public void onReceiveValue(String s) {
+
+
+      }
+    });
+  }
+
+  @Override
   protected void onStart() {
 
     super.onStart();
 
-    this.webView.loadUrl("http://192.168.1.111:8080/Login");
+    this.webView.loadUrl("http://csga.indoorun.com/ne/Login");
   }
 }
